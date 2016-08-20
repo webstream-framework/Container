@@ -1,0 +1,28 @@
+sudo: required
+
+services:
+  - docker
+
+language: php
+
+before_script:
+  - composer install
+  - mkdir -p build/logs
+
+script:
+  - docker run -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container vendor/bin/phpunit --configuration phpunit.xml
+
+after_script:
+  - vendor/bin/test-reporter
+
+php:
+  - 7.0
+
+addons:
+  code_climate:
+    repo_token:
+      secure: "Oh2/WSIMUlqoz2qOrHpXM6MoylzSUJGYf4FBWYAsFJSDYx7KBRstewCuOTjs12ep1eY8zHLES3E0vYzRFXIOqDd/2doiZJ8S3JcmkCVIegU16e6Fuq80UGWOL+VC48hwWR9CdzQuZKDqtImhuRZlOz8EW3AVzEzcYcd6cjwkvk057F0NOpvNe1Usql7BjEkzQBYnrinWF5m88p8x0HJ2mf2A0TzV1S6FRy18FZgn3KihkpmPZYRC746U50JTE3MCO/01P+LEPBt5RdBylHc6ANxCunJQOUHaXNz3hGQ6W7OvlyfThnyPi8i4YMqYSSmuIbO+XfysPKwImdCa1NP3aVx6b9c26dMImrJRcb3L6sFCWO/Tat1EisDjppMQiizh8S3gzmdBX7yQq8qiVTzhw0I1vZC+ZNJ1wr29UPVVM6VqieiGs8OX7XSE/JvFKPX4Bw/+nl+R3xLzF8l387+1UoCzhTxVKpWC+8kSwmf4DbWbJ8ptWpXlpzEqjxUWh2gLsX7s9nLYD3iQZ9jOdGvPn2lKnQoEJPheI12nf9GwC3RFL8of7C2+96m4R+hA29oggaWDZZ7xUzCBrPz9X4ZM8QZZhnO8E80xCvAva8UnxRx05FtuBZTHaHR7XJbcdto4aGPkqB13O6Ov6iwiFwethXpITnOAiR6oph+8mnA9o/U="
+
+notifications:
+  slack:
+    secure: tobcQWs5nYA4dk9FkGsYEc7NKTOfwwB43eu4mAa6Iqmr5rRF8fpj0iebwfTrkXBcOCbqfwbr4OMWQ2Dq5PuAp0NlCkHGBr6QH4COzjopO/qOSllVkxnlwi/SKYLcrLdtWdwUCJRbpp72UWCJgq/mhP1ksJf6TtlzpCc5fkO0gxJNUvMb/uUqKUWebHK4bNtNTWE5ffy7Mnxh33Ad+CTV0bqPRuRgwkh0kR4lv/83ew+EzXkxzFPppy4BJMtuBqSDx2RFsY5d8ejwVTJzVz1JLMAKzvrf5VXU+EndeaIx68zDT0bwwyq2H07ovVrL4CTkbI2a4yJDZHPhLee9JQ1fVIS7idV30ChY8drsI1xQDKYkE/vaXjlKE/cB6uOE245X+Ht6uhILTJpwjHSu0CHX3RdyWSXnSg0AsaPZN2g/58W9CzfAK9w6tgVPtxhAE81L+7De9BehEfyUfDN5EN1o4C1KWH9LLw8z6Ha19DG2d/xhJOWSMFu64TiwkuQ3lb14x/R/bcO8rJpxcpnTp10r6NIRAMJKnbMiOmmzgu7EONiUPkjIFuf57p7/rCjGLCqE8OYOhh/xt1sWzn0T17ztzKTlhoJtBq6pvkbRY8OdGsfjUvlvbEJG9zi2qqv2d8DLhGXtFWu39+A1YfEwrdi/BANuLx7vLYHYRczjveyWAlw=
