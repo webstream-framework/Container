@@ -13,6 +13,7 @@ script:
   - docker run -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container vendor/bin/phpunit --configuration phpunit.xml
 
 after_script:
+  - vendor/bin/phpunit
   - vendor/bin/test-reporter
 
 php:
