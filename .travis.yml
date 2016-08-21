@@ -10,7 +10,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - docker run -e CODE_CLIMATE_TOKEN=$CODE_CLIMATE_TOKEN -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container /bin/sh -c 'vendor/bin/phpunit --configuration phpunit.xml | vendor/bin/test-reporter'
+  - docker run -e CODE_CLIMATE_TOKEN=$CODE_CLIMATE_TOKEN -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container /bin/sh -c 'vendor/bin/phpunit --configuration phpunit.xml | ls -la build/logs/ | vendor/bin/test-reporter'
 
 php:
   - 7.0
