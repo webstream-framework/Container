@@ -10,19 +10,17 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - docker run -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container vendor/bin/phpunit --configuration phpunit.xml
+  - docker run -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container -e CODE_CLIMATE_TOKEN=$CODE_CLIMATE_TOKEN vendor/bin/phpunit --configuration phpunit.xml
 
 after_script:
-  - vendor/bin/phpunit
   - vendor/bin/test-reporter
 
 php:
   - 7.0
 
-addons:
-  code_climate:
-    repo_token:
-      secure: "Oh2/WSIMUlqoz2qOrHpXM6MoylzSUJGYf4FBWYAsFJSDYx7KBRstewCuOTjs12ep1eY8zHLES3E0vYzRFXIOqDd/2doiZJ8S3JcmkCVIegU16e6Fuq80UGWOL+VC48hwWR9CdzQuZKDqtImhuRZlOz8EW3AVzEzcYcd6cjwkvk057F0NOpvNe1Usql7BjEkzQBYnrinWF5m88p8x0HJ2mf2A0TzV1S6FRy18FZgn3KihkpmPZYRC746U50JTE3MCO/01P+LEPBt5RdBylHc6ANxCunJQOUHaXNz3hGQ6W7OvlyfThnyPi8i4YMqYSSmuIbO+XfysPKwImdCa1NP3aVx6b9c26dMImrJRcb3L6sFCWO/Tat1EisDjppMQiizh8S3gzmdBX7yQq8qiVTzhw0I1vZC+ZNJ1wr29UPVVM6VqieiGs8OX7XSE/JvFKPX4Bw/+nl+R3xLzF8l387+1UoCzhTxVKpWC+8kSwmf4DbWbJ8ptWpXlpzEqjxUWh2gLsX7s9nLYD3iQZ9jOdGvPn2lKnQoEJPheI12nf9GwC3RFL8of7C2+96m4R+hA29oggaWDZZ7xUzCBrPz9X4ZM8QZZhnO8E80xCvAva8UnxRx05FtuBZTHaHR7XJbcdto4aGPkqB13O6Ov6iwiFwethXpITnOAiR6oph+8mnA9o/U="
+env:
+  global:
+    secure: "a2V9PORKKJ4f254rzqmLaTRLB+B/82jJpMC9cjybbZGxlP83Jrzs/mTcyiPjr1J7OQVRROQQG1FEe1KaVVgHugLKxoxerK5jNKz2fn/uXg2wfBSGkiDwScH1YHvZpKp3ELBU/fILKHJhebvHMBJ5ZpexVBfnszcT3AYDjAunh0DAPnNJf6vgd6pkv0Y4k5g1eoTou/6mvI7KaadyBFaQKLvja7LYeOOcJvk3nOj2a4t3yJQjG9M1jyuipOAfwW4XO6YdZi0q35u1GzdhdbiBSzNp4RwEBGQUr1rFKTzVJmV5e/+zEJ2O0qlNxJ+7deGxlZoDFjdHEXwY8NjgpwUcBqH4uoM16TKIYDgdh3h1nlyVEbPMMZzFJdJ1wVBFPPTZZCMUL5HXgT591MFp0uC0PkBTXBBqkCswJUL4YIp9cNsf1m2tVsjLBi4W1xQ/dG1GWasOIh8wQWqialDeNgQnpMhYMqSXf0GK3xYSBNCRNSit/oDgqapcMHGtyrG7GGac+XZJUGSkIRJGOSu3WONyBQsOtseEnYUDCkXBYhWOS4GCuvuX/roSc+JUDt8M1En6lCN+PdtQ75M2s+ASDUjNmFQWS+u03bU3pGPU7OmqmFXqZV5I16oVuhsD2KG+xKJkLv8QZJNsz6KG2dHU+3CdgGPSz3ivYh4K4TNd+phh16w="
 
 notifications:
   slack:
