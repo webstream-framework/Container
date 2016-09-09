@@ -10,14 +10,9 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - docker run -e CODE_CLIMATE_TOKEN=$CODE_CLIMATE_TOKEN -v /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container /bin/sh -c 'vendor/bin/phpunit --configuration phpunit.xml | ls -la build/logs/ | vendor/bin/test-reporter'
-
+  - docker run /home/travis/build/webstream-framework/Container:/workspace/ webstream/module-container vendor/bin/phpunit
 php:
   - 7.0
-
-env:
-  global:
-    secure: "a2V9PORKKJ4f254rzqmLaTRLB+B/82jJpMC9cjybbZGxlP83Jrzs/mTcyiPjr1J7OQVRROQQG1FEe1KaVVgHugLKxoxerK5jNKz2fn/uXg2wfBSGkiDwScH1YHvZpKp3ELBU/fILKHJhebvHMBJ5ZpexVBfnszcT3AYDjAunh0DAPnNJf6vgd6pkv0Y4k5g1eoTou/6mvI7KaadyBFaQKLvja7LYeOOcJvk3nOj2a4t3yJQjG9M1jyuipOAfwW4XO6YdZi0q35u1GzdhdbiBSzNp4RwEBGQUr1rFKTzVJmV5e/+zEJ2O0qlNxJ+7deGxlZoDFjdHEXwY8NjgpwUcBqH4uoM16TKIYDgdh3h1nlyVEbPMMZzFJdJ1wVBFPPTZZCMUL5HXgT591MFp0uC0PkBTXBBqkCswJUL4YIp9cNsf1m2tVsjLBi4W1xQ/dG1GWasOIh8wQWqialDeNgQnpMhYMqSXf0GK3xYSBNCRNSit/oDgqapcMHGtyrG7GGac+XZJUGSkIRJGOSu3WONyBQsOtseEnYUDCkXBYhWOS4GCuvuX/roSc+JUDt8M1En6lCN+PdtQ75M2s+ASDUjNmFQWS+u03bU3pGPU7OmqmFXqZV5I16oVuhsD2KG+xKJkLv8QZJNsz6KG2dHU+3CdgGPSz3ivYh4K4TNd+phh16w="
 
 notifications:
   slack:
