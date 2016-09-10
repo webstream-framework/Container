@@ -9,7 +9,7 @@ namespace WebStream\Container\Test\Providers;
  */
 trait ContainerProvider
 {
-    public function valueProvider()
+    public function valueLazyProvider()
     {
         $func = function() {
             return "test";
@@ -20,6 +20,19 @@ trait ContainerProvider
             [123, 123],
             [true, true],
             [$func, "test"]
+        ];
+    }
+
+    public function valueDynamicProvider()
+    {
+        $func = function() {
+            return "test";
+        };
+
+        return [
+            ["test", "test"],
+            [123, 123],
+            [true, true]
         ];
     }
 }
