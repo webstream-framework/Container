@@ -17,9 +17,14 @@ filter:
 tools:
     external_code_coverage:
         timeout: 2400
+    php_sim:
+        min_mass: 30
     php_code_coverage:
         enabled: false
     php_cpd:
+        enabled: true
+        config:
+            standard: PSR2
         excluded_dirs:
             - Test
     php_cs_fixer:
