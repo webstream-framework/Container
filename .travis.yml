@@ -26,7 +26,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - if [[ $VERSION > 7.0 ]]; then docker run -v /home/travis/build/webstream-framework/Container:/workspace/ --rm webstream/php-alpine:$VERSION phpdbg -qrr vendor/bin/phpunit --configuration phpunit.xml --coverage-clover=coverage.clover; fi
+  - if [[ $VERSION > 7.0 ]]; then docker run -v /home/travis/build/webstream-framework/Container:/workspace/ --rm webstream/php-alpine:$VERSION phpdbg -qrr vendor/bin/phpunit --configuration phpunit.xml --coverage-clover=coverage.clover;
     else docker run -v /home/travis/build/webstream-framework/Container:/workspace/ --rm webstream/php-alpine:$VERSION vendor/bin/phpunit --configuration phpunit.xml; fi
 
 after_script:
