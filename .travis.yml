@@ -30,5 +30,5 @@ script:
     else docker run -v /home/travis/build/webstream-framework/Container:/workspace/ --rm webstream/php-alpine:$VERSION vendor/bin/phpunit --configuration phpunit.xml; fi
 
 after_script:
-  - if [[ $VERSION = 'latest' ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
-  - if [[ $VERSION = 'latest' ]]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi
+  - if [[ $VERSION = 7.2 ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+  - if [[ $VERSION = 7.2 ]]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi
