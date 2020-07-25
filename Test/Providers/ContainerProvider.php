@@ -1,4 +1,5 @@
 <?php
+
 namespace WebStream\Container\Test\Providers;
 
 /**
@@ -11,7 +12,7 @@ trait ContainerProvider
 {
     public function valueLazyProvider()
     {
-        $func = function() {
+        $func = function () {
             return "test";
         };
 
@@ -25,7 +26,7 @@ trait ContainerProvider
 
     public function valueDynamicProvider()
     {
-        $func = function() {
+        $func = function () {
             return "test";
         };
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace WebStream\Container\Test;
 
 require_once dirname(__FILE__) . '/../Container.php';
@@ -7,7 +8,6 @@ require_once dirname(__FILE__) . '/../Test/Providers/ContainerProvider.php';
 require_once dirname(__FILE__) . '/../Test/Modules/InvalidArgumentException.php';
 
 use WebStream\Container\Container;
-use WebStream\Container\ValueProxy;
 use WebStream\Container\Test\Providers\ContainerProvider;
 
 /**
@@ -51,10 +51,11 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
      * 値を削除できること
      * 削除後の要素にアクセスすると例外が発生すること
      * @test
-     * @expectedException WebStream\Exception\Extend\InvalidArgumentException
      */
     public function okRemove()
     {
+        $this->expectException(\WebStream\Exception\Extend\InvalidArgumentException::class);
+
         $container = new Container();
         $container->test1 = 1;
         $container->remove("test1");
@@ -83,12 +84,12 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
      */
     public function okRegisterClosure()
     {
-        $func = function() {
+        $func = function () {
             return "test";
         };
         $container = new Container();
         $container->register("test", $func);
-        $this->assertInternalType("object", $container->test);
+        $this->assertIsObject($container->test);
         $result = $container->test;
         $this->assertEquals($result(), "test");
     }
@@ -100,7 +101,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
      */
     public function okRegisterAsDynamic()
     {
-        $func = function() {
+        $func = function () {
             echo "evaluated";
             return "test";
         };
@@ -117,13 +118,13 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
      */
     public function okRegisterAsLazy()
     {
-        $func = function() {
+        $func = function () {
             echo "evaluated";
             return "test";
         };
         $container = new Container();
         $container->registerAsLazy("test", $func);
-        $this->expectOutputString(null);
+        $this->expectOutputString("");
         $this->assertEquals($container->test, "test");
         $this->expectOutputString("evaluated");
     }
@@ -135,7 +136,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
      */
     public function okRegisterCached()
     {
-        $func = function() {
+        $func = function () {
             echo "evaluated";
             return "test";
         };
@@ -163,7 +164,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
      */
     public function okRegisterUnCached()
     {
-        $func = function() {
+        $func = function () {
             echo "evaluated";
             return "test";
         };
