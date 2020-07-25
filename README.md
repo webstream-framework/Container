@@ -1,5 +1,5 @@
 # Container
-[![Build Status](https://travis-ci.org/webstream-framework/Container.svg?branch=master)](https://travis-ci.org/webstream-framework/Container)
+![build](https://github.com/webstream-framework/Container/workflows/build/badge.svg)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webstream-framework/Container/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webstream-framework/Container/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/webstream-framework/Container/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/webstream-framework/Container/?branch=master)
 
