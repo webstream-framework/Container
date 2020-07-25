@@ -1,4 +1,5 @@
 <?php
+
 namespace WebStream\Container;
 
 use WebStream\Exception\Extend\InvalidArgumentException;
